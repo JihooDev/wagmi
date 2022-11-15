@@ -11,6 +11,7 @@ import {
 } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 import Profile from './component/Profile';
+import UseAccount from './component/UseAccount';
 
 
 
@@ -38,7 +39,7 @@ function App() {
   )
 
   const client = createClient({
-    autoConnect : true,
+    autoConnect : false,
     provider,
     webSocketProvider
   })
@@ -48,6 +49,7 @@ function App() {
     <WagmiConfig client={client}>
       <h1>Test</h1>
       <Profile />
+      <UseAccount />
     </WagmiConfig>
   );
 }
