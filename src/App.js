@@ -12,6 +12,7 @@ import {
 import { publicProvider } from 'wagmi/providers/public';
 import Profile from './component/Profile';
 import UseAccount from './component/UseAccount';
+import { Container, ThemeProvider } from 'react-bootstrap';
 
 
 
@@ -33,24 +34,26 @@ import UseAccount from './component/UseAccount';
  */
 function App() {
 
-  const {chains,provider,webSocketProvider} = configureChains(
+  const { chains, provider, webSocketProvider } = configureChains(
     [chain.goerli, chain.polygon],
     [publicProvider()]
   )
 
   const client = createClient({
-    autoConnect : false,
+    autoConnect: false,
     provider,
     webSocketProvider
   })
 
 
   return (
-    <WagmiConfig client={client}>
-      <h1>Test</h1>
-      <Profile />
-      <UseAccount />
-    </WagmiConfig>
+    <ThemeProvider>
+      <WagmiConfig client={client}>
+        <h1>Test</h1>
+        <Profile />
+        <UseAccount />
+      </WagmiConfig>
+    </ThemeProvider>
   );
 }
 
